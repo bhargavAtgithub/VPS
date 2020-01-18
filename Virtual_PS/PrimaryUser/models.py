@@ -13,6 +13,9 @@ class User(models.Model):
     def _str__(self):
         return self.aadhar
 
+    def get_absolute_url(self):
+        return reverse("PrimaryUser:PrimaryUser")
+
 class FIR(models.Model):
     user = models.ForeignKey(User, on_delete  = models.CASCADE)
     description = models.CharField(max_length= 500)
@@ -23,3 +26,6 @@ class FIR(models.Model):
     def save(self):
         self.time_stamp = timezone.now()
         return super(FIR, self).save()
+
+    def get_absolute_url(self):
+        return reverse("PrimaryUser: PrimaryUser")
